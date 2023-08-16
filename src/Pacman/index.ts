@@ -1,4 +1,4 @@
-import { Direction, Position, Turn } from "./types";
+import { Direction, Position, Turn } from "../types";
 
 export default class Pacman {
   private position: Position | null;

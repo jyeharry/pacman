@@ -1,6 +1,6 @@
 import select from "@inquirer/select";
-import Pacman from "./Pacman";
-import { Direction } from "./types";
+import Pacman from "../Pacman";
+import { Direction } from "../types";
 
 export default class PacmanCLI {
   private GRID_SIZE;
