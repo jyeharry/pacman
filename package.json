@@ -2,14 +2,19 @@
   "name": "pacman",
   "version": "1.0.0",
   "description": "A coding challenge for IE",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pacman": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc --outDir dist"
   },
   "author": "jyeharry",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.5.0",
     "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@inquirer/select": "^1.2.7"
   }
 }
