@@ -36,7 +36,7 @@ The user is then presented with a list of commands to choose from. The user can 
 - **MOVE**: moves Pacman forward one space.
 - **LEFT**: turns Pacman left 90º.
 - **RIGHT**: turns Pacman right 90º.
-- **REPORT**: logs Pacmans position in the formate 'x, y, DIRECTION'.
+- **REPORT**: logs Pacmans position in the format 'x, y, DIRECTION'.
 - **EXIT**: exits the app.
 
 ## Testing
