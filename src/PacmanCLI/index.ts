@@ -3,32 +3,36 @@ import Pacman from "../Pacman";
 import { Direction } from "../types";
 
 export default class PacmanCLI {
-  private GRID_SIZE;
-  private pacman;
+  #GRID_SIZE;
+  #pacman;
 
   constructor(gridSize: number = 5) {
-    this.GRID_SIZE = gridSize;
-    this.pacman = new Pacman(gridSize);
+    this.#GRID_SIZE = gridSize;
+    this.#pacman = new Pacman(gridSize);
   }
 
   async run() {
     const command = await this.#menu();
 
-    if (command === "exit") {
-      return;
-    } else if (command === "place") {
-      await this.#place();
-    } else {
-      const pacmanProto = Object.getPrototypeOf(this.pacman);
-      if (pacmanProto.hasOwnProperty(command)) {
-        pacmanProto[command].bind(this.pacman)();
-      }
+    switch (command) {
+      case "exit":
+        return;
+      case "place":
+        await this.#place();
+        break;
+      case "report":
+        const report = this.#pacman.report();
+        if (report) console.log(report);
+        break;
+      default:
+        this.#pacman[command]();
+        break;
     }
 
     this.run();
   }
 
-  async #menu() {
+  async #menu(): Promise<Exclude<keyof Pacman, "position"> | "exit"> {
     return await select({
       message: "Choose a command",
       choices: [
@@ -69,13 +73,13 @@ export default class PacmanCLI {
     const [x, y, direction] = [
       await select({
         message: "Enter the X coordinate",
-        choices: Array.from({ length: this.GRID_SIZE }).map((_, i) => ({
+        choices: Array.from({ length: this.#GRID_SIZE }).map((_, i) => ({
           value: i,
         })),
       }),
       await select({
         message: "Enter the Y coordinate",
-        choices: Array.from({ length: this.GRID_SIZE }).map((_, i) => ({
+        choices: Array.from({ length: this.#GRID_SIZE }).map((_, i) => ({
           value: i,
         })),
       }),
@@ -90,6 +94,6 @@ export default class PacmanCLI {
       }),
     ];
 
-    this.pacman.place({ x, y, direction });
+    this.#pacman.place({ x, y, direction });
   }
 }

@@ -19,10 +19,10 @@ export default class Pacman {
 
     switch (this.#position.direction) {
       case Direction.NORTH:
-        if (this.#position.y < this.#GRID_SIZE) this.#position.y++;
+        if (this.#position.y < this.#GRID_SIZE - 1) this.#position.y++;
         break;
       case Direction.EAST:
-        if (this.#position.x < this.#GRID_SIZE) this.#position.x++;
+        if (this.#position.x < this.#GRID_SIZE - 1) this.#position.x++;
         break;
       case Direction.SOUTH:
         if (this.#position.y > 0) this.#position.y--;
@@ -42,26 +42,24 @@ export default class Pacman {
   }
 
   report() {
-    if (this.#position)
-      console.log(
-        [
-          this.#position.x,
-          this.#position.y,
-          Direction[this.#position.direction],
-        ].join(", ")
-      );
+    if (!this.#position) return;
+    return [
+      this.#position.x,
+      this.#position.y,
+      Direction[this.#position.direction],
+    ].join(", ");
   }
 
   get position() {
-    return this.#position
+    return this.#position;
   }
 
   // private methods
   #isWithinBounds({ x, y, direction }: Position): boolean {
     return (
-      x > 0 &&
+      x >= 0 &&
       x < this.#GRID_SIZE &&
-      y > 0 &&
+      y >= 0 &&
       y < this.#GRID_SIZE &&
       Object.values(Direction).includes(direction)
     );
