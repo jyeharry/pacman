@@ -4,7 +4,7 @@
 
 This is my solution to a coding challenge given to me by IE.
 
-The program is a command line app. It's purpose is to place Pacman onto a grid and be able to move it around using prompts by the user.
+The program is a command line app. It's purpose is to place Pacman onto a grid and be able to move it around using prompts from the user.
 
 ### Constraints
 
@@ -28,16 +28,16 @@ The app is started with the following command:
 npm run pacman
 ```
 
-The user is then presented with a list of several commands to choose from. The user can use the arrow keys or vim keys ('j' and 'k') to cycle through the list of commands, then press 'Enter' to select one.
+The user is then presented with a list of commands to choose from. The user can use the arrow keys or vim keys ('j' and 'k') to cycle through the list of commands, then press 'Enter' to select one.
 
 ## Commands
 
-- PLACE: takes three arguments; x coordinate, y coordinate and direction.
-- MOVE: moves Pacman forward one space.
-- LEFT: turns Pacman left 90º.
-- RIGHT: turns Pacman right 90º.
-- REPORT: logs Pacmans position in the formate 'x, y, DIRECTION'.
-- EXIT: exits the app.
+- **PLACE**: takes three arguments; x coordinate, y coordinate and direction.
+- **MOVE**: moves Pacman forward one space.
+- **LEFT**: turns Pacman left 90º.
+- **RIGHT**: turns Pacman right 90º.
+- **REPORT**: logs Pacmans position in the formate 'x, y, DIRECTION'.
+- **EXIT**: exits the app.
 
 ## Testing
 
